@@ -1,1 +1,1 @@
-## to do list in python
+### Practicing the fundamentals
