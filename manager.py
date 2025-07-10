@@ -1,11 +1,10 @@
 def add_task(tasks, task_name):
   task = {"task": task_name, "completed": False}
   tasks.append(task)
-  print(f"Task {task_name} added with success!")
+  print(f'Task "{task_name}" added with success!')
   return
  
 tasks = []
-
 while True:
   print("\nMenu")
   print("1. Add a new task")
@@ -17,7 +16,7 @@ while True:
   option = input("Enter an option: ")
   if option == "1":
     task = input("Enter a task: ")
-    add_task(task)
+    add_task(tasks, task)
   # elif option == "2":
   #   show_tasks()
   # elif option == "3":
@@ -29,7 +28,7 @@ while True:
   #   complete_task(task_id)
   # elif option == "5":
   #   delete_completed_tasks()
-  if option == "6":
+  elif option == "6":
     break
   else:
     print("\nInvalid option.")
