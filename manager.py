@@ -3,7 +3,17 @@ def add_task(tasks, task_name):
   tasks.append(task)
   print(f'Task "{task_name}" added with success!')
   return
- 
+
+def show_tasks(tasks):
+  if not tasks:
+    print("\nNo tasks available.")
+    return
+  print("\nTasks:")
+  for i, task in enumerate(tasks, start=1):
+    status = "✓" if task["completed"] else " "
+    task_name = task["task"]
+    print(f"{i}. {task_name} [{status}]")
+
 tasks = []
 while True:
   print("\nMenu")
@@ -17,8 +27,8 @@ while True:
   if option == "1":
     task = input("Enter a task: ")
     add_task(tasks, task)
-  # elif option == "2":
-  #   show_tasks()
+  elif option == "2":
+    show_tasks(tasks)
   # elif option == "3":
   #   task_id = int(input("Enter the task ID: "))
   #   task = input("Enter the new task: ")
