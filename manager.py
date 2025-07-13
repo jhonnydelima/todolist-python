@@ -13,6 +13,12 @@ def show_tasks(tasks):
     status = "✓" if task["completed"] else " "
     task_name = task["task"]
     print(f"{i}. {task_name} [{status}]")
+  return
+
+def update_task_name(tasks, task_index, new_task_name):
+  tasks[task_index]["task"] = new_task_name
+  print(f'\nTask {task_index + 1} updated to "{new_task_name}".')
+  return
 
 tasks = []
 while True:
@@ -29,10 +35,15 @@ while True:
     add_task(tasks, task)
   elif option == "2":
     show_tasks(tasks)
-  # elif option == "3":
-  #   task_id = int(input("Enter the task ID: "))
-  #   task = input("Enter the new task: ")
-  #   update_task(task_id, task)
+  elif option == "3":
+    show_tasks(tasks)
+    task_index = int(input("Enter the task index to update: ")) - 1
+    if 0 <= task_index < len(tasks):
+      new_task_name = input("Enter the new task name: ")
+    else:
+      print("\nInvalid task index.")
+      continue
+    update_task_name(tasks, task_index, new_task_name)
   # elif option == "4":
   #   task_id = int(input("Enter the task ID: "))
   #   complete_task(task_id)
