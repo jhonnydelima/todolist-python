@@ -25,6 +25,13 @@ def complete_task(tasks, task_index):
   print(f'\nTask "{tasks[task_index]["task"]}" marked as completed.')
   return
 
+def delete_completed_tasks(tasks):
+  for task in tasks:
+    if task["completed"]:
+      tasks.remove(task)
+  print("\nCompleted tasks deleted.")
+  return
+
 tasks = []
 while True:
   print("\nMenu")
@@ -57,8 +64,9 @@ while True:
     else:
       print("\nInvalid task.")
       continue
-  # elif option == "5":
-  #   delete_completed_tasks()
+  elif option == "5":
+    delete_completed_tasks(tasks)
+    show_tasks(tasks)
   elif option == "6":
     break
   else:
