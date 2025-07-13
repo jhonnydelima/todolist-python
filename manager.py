@@ -20,6 +20,11 @@ def update_task_name(tasks, task_index, new_task_name):
   print(f'\nTask {task_index + 1} updated to "{new_task_name}".')
   return
 
+def complete_task(tasks, task_index):
+  tasks[task_index]["completed"] = True
+  print(f'\nTask "{tasks[task_index]["task"]}" marked as completed.')
+  return
+
 tasks = []
 while True:
   print("\nMenu")
@@ -37,16 +42,21 @@ while True:
     show_tasks(tasks)
   elif option == "3":
     show_tasks(tasks)
-    task_index = int(input("Enter the task index to update: ")) - 1
+    task_index = int(input("Enter the task number to update: ")) - 1
     if 0 <= task_index < len(tasks):
       new_task_name = input("Enter the new task name: ")
     else:
-      print("\nInvalid task index.")
+      print("\nInvalid task.")
       continue
     update_task_name(tasks, task_index, new_task_name)
-  # elif option == "4":
-  #   task_id = int(input("Enter the task ID: "))
-  #   complete_task(task_id)
+  elif option == "4":
+    show_tasks(tasks)
+    task_index = int(input("Enter the task number to complete: ")) - 1
+    if 0 <= task_index < len(tasks):
+      complete_task(tasks, task_index)
+    else:
+      print("\nInvalid task.")
+      continue
   # elif option == "5":
   #   delete_completed_tasks()
   elif option == "6":
